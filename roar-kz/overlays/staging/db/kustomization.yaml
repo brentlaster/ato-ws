@@ -1,0 +1,13 @@
+
+# List of resource files that kustomize reads, modifies
+# and emits as a YAML string
+resources:
+- ../../../base/db
+
+# Change the image name and version
+images:
+- name: localhost:5000/roar-db
+  newName: bclaster/roar-db
+  newTag: v2
+
+
