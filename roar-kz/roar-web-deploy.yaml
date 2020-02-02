@@ -1,0 +1,20 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    app: roar-web
+  name: roar-web
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: roar-web
+    spec:
+      containers:
+      - image: localhost:5000/roar-web:v1
+        imagePullPolicy: Always
+        name: roar-web
+        ports:
+        - containerPort: 8080
+          name: web

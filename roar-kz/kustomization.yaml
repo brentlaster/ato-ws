@@ -1,0 +1,23 @@
+# Common label to be applied
+commonLabels:
+  app: original
+
+
+# List of resource files that kustomize reads, modifies
+# and emits as a YAML string
+resources:
+- roar-db-deploy.yaml
+- roar-db-svc.yaml
+- roar-web-deploy.yaml
+- roar-web-svc.yaml
+
+# Change the service name from "roar-db" to "mysql" 
+# so it will work as expected with the webapp
+patches:
+- patch: |-
+    - op: replace
+      path: "/metadata/name"
+      value: "mysql"
+  target:
+    kind: Service
+    name: "roar-db"

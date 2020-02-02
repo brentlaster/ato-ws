@@ -1,0 +1,29 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    app: roar-db
+  name: roar-db
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: roar-db
+    spec:
+      containers:
+      - env:
+        - name: MYSQL_DATABASE
+          value: registry
+        - name: MYSQL_PASSWORD
+          value: admin
+        - name: MYSQL_ROOT_PASSWORD
+          value: root+1
+        - name: MYSQL_USER
+          value: admin
+        image: localhost:5000/roar-db:v1
+        imagePullPolicy: Always
+        name: roar-db
+        ports:
+        - containerPort: 3306
+          name: mysql
