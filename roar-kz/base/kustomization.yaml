@@ -1,0 +1,16 @@
+# Common label to be applied
+commonLabels:
+  app: original
+
+namespace: roar-original
+
+# List of resource files that kustomize reads, modifies
+# and emits as a YAML string
+resources:
+- ./db
+- ./web
+- namespace.yaml
+
+
+
+
