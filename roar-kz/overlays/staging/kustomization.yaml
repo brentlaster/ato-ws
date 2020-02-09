@@ -11,3 +11,20 @@ resources:
 - ../../base/web
 - namespace.yaml
 
+# Generate a configmap of database info
+configMapGenerator:
+  - name: mysql-db-configmap
+    literals:
+      - mysql.database=registry
+
+# Change the service name from "roar-db" to "mysql" 
+# so it will work as expected with the webapp
+patchesStrategicMerge:
+- patch_db.yaml 
+
+              
+
+
+
+
+          
