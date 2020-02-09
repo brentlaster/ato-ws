@@ -1,0 +1,13 @@
+
+# List of resource files that kustomize reads, modifies
+# and emits as a YAML string
+resources:
+- ../../../base/db
+
+# Add in persistent storage
+patchesStrategicMerge:
+- patch_pv.yaml 
+
+
+
+

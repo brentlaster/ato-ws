@@ -11,3 +11,8 @@ images:
   newTag: v2
 
 
+# Get the value for the database name from the configmap 
+# instead of the environment variable
+patchesStrategicMerge:
+- patch_db.yaml 
+

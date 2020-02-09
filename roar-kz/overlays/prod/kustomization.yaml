@@ -1,8 +1,8 @@
 # Common label to be applied
 commonLabels:
-  variant: staging
+  variant: prod
 
-namespace: roar-staging
+namespace: roar-prod
 
 # List of resource files that kustomize reads, modifies
 # and emits as a YAML string
@@ -10,12 +10,10 @@ resources:
 - ./db
 - ../../base/web
 - namespace.yaml
+- storage.yaml
 
-# Generate a configmap of database info
-configMapGenerator:
-  - name: mysql-db-configmap
-    literals:
-      - mysql.database=registry
+
+              
 
 
 
