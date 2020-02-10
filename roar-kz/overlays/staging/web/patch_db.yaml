@@ -1,17 +1,16 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: roar-db
+  name: roar-web
 spec:
   template:
     spec:
       containers:
-      - name: roar-db
+      - name: roar-web
         env:
-        - name: MYSQL_DATABASE
-          value: 
+        - name: MYSQL_ENV_MYSQL_DATABASE
           valueFrom:
             configMapKeyRef:
-              name: mysql-configmap
+              name: mysql-db-configmap
               key: mysql.database
       

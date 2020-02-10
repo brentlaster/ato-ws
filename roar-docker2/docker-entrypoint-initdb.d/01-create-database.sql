@@ -1,2 +1,2 @@
-CREATE DATABASE registry-test;
-CREATE DATABASE registry-test2;
+CREATE DATABASE registry_test;
+CREATE DATABASE registry_test2;

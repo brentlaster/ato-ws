@@ -1,0 +1,11 @@
+
+# List of resource files that kustomize reads, modifies
+# and emits as a YAML string
+resources:
+- ../../../base/web
+
+# Get the value for the database name from the configmap 
+# instead of the environment variable
+patchesStrategicMerge:
+- patch_db.yaml 
+

@@ -2,6 +2,7 @@ FROM mysql:5.5.45
 
 
 COPY docker-entrypoint-initdb.d /docker-entrypoint-initdb.d/
+COPY entrypoint-new.sh /entrypoint-new.sh
 
-ENTRYPOINT ["/entrypoint.sh"]
+ENTRYPOINT ["/entrypoint-new.sh"]
 CMD ["mysqld"] 

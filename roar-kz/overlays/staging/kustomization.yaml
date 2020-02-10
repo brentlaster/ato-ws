@@ -8,14 +8,14 @@ namespace: roar-staging
 # and emits as a YAML string
 resources:
 - ./db
-- ../../base/web
+- ./web
 - namespace.yaml
 
 # Generate a configmap of database info
 configMapGenerator:
   - name: mysql-db-configmap
     literals:
-      - mysql.database=registry
+      - mysql.database=registry_test
 
 
 

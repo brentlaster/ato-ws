@@ -1,5 +1,5 @@
 
-USE `registry-test2`;
+USE `registry_test2`;
 
 CREATE TABLE `agents` (
   `id` int(11) NOT NULL AUTO_INCREMENT,

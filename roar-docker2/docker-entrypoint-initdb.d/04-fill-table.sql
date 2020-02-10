@@ -1,6 +1,7 @@
 --
 -- Initial data for table `agents`
 --
+USE `registry_test`;
 
 LOCK TABLES `agents` WRITE;
 

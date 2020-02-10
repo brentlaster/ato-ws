@@ -8,11 +8,7 @@ resources:
 images:
 - name: localhost:5000/roar-db
   newName: bclaster/roar-db
-  newTag: v2
+  newTag: test
 
-
-# Get the value for the database name from the configmap 
-# instead of the environment variable
-patchesStrategicMerge:
-- patch_db.yaml 
+ 
 
