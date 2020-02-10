@@ -1,0 +1,32 @@
+
+How this works:
+
+roar-docker2 is to build a new image (bclaster/roar-db:test) to have 2 new databases in it - registry_test and registry_test2.  These are subsets of the registry contents - each with different animals in them with (test) in the name to make it obvious.  
+
+To get this all to work, I had to create new sql files under the .d directory for the two databases. 
+I also had to create an entrypoint-new.sh script where the only change was to 
+
+grant all privileges on *.* to 'admin'@'%' identified by 'admin';
+
+before the change, that line had had 'MYSQL_DATABASE' instead of the first '*'.
+
+Note that 'admin'@'%' is not the same as 'admin'@'localhost'.  Also, you need to 'FLUSH PRIVILEGES' to write out to disk.
+
+To make database change happen, had to set environment variable MYSQL_ENV_MYSQL_DATABASE in web deployment - not in db deployment.  This corresponds to way datasource code works in dataaccess project in roarv3 in github.  Checks for that environment variable and if found, uses database from that. If not, defaults to registry. Adding this variable is what patch_db.yaml does in the roar-kz/overlays/staging/web area.
+
+So, bases is just the regular k8s yaml file with a kustomization file that adds some common things.
+
+In overlays/staging, we are customizing the db piece to pull in the bclaster/roar-db:test image which has the test databases instead of the registry one. 
+
+We are also creating a configmap generator in overlays/staging.  The idea is this points to the registry_test database initially for staging (testing) purposes.  Students can edit the file that defines the configmap generator to point to registry_test2 database. 
+
+At start and when editing configmap generator, have to run (in overlay/staging)
+
+kz build . | k apply -f -
+
+kz is aliased to kustomize.  kz build . will dump "kustomized" yaml out.  Piping it through k apply -f -
+is kubectl apply -f (the - on the end just means stdin - what it got from piping).
+
+overlays/prod is just adding in persistent volume stuff.
+
+Note that bases and both overlays create their own namespaces with yaml too.
