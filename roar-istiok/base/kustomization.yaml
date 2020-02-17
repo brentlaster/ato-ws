@@ -1,20 +1,15 @@
 # Common label to be applied
 commonLabels:
-  variant: staging
+  app: original
 
-namespace: roar-staging
+namespace: roar-istiok
 
 # List of resource files that kustomize reads, modifies
 # and emits as a YAML string
 resources:
-- ./db
-- ./web
-- namespace.yaml
-- mysql-db-configmap.yaml
+- ./combined
 
 
 
 
 
-
-          

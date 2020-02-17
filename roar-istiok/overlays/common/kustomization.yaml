@@ -1,0 +1,8 @@
+# List of resource files that kustomize reads, modifies
+# and emits as a YAML string
+resources:
+- gateway.yaml
+- destinationrule.yaml
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: roar-istiok

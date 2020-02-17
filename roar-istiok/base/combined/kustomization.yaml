@@ -1,0 +1,12 @@
+
+namespace: roar-istiok
+
+# List of resource files that kustomize reads, modifies
+# and emits as a YAML string
+resources:
+- roar-svc.yaml
+- roar-deploy-current.yaml
+- roar-deploy-new.yaml
+- namespace.yaml
+
+

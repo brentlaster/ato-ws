@@ -1,0 +1,10 @@
+# Generate a configmap of database info
+
+apiVersion: v1
+kind: ConfigMap
+metadata: 
+  name: mysql-db-configmap
+data:
+  mysql.database: registry_prod
+
+
