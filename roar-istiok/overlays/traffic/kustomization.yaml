@@ -8,7 +8,7 @@ namespace: roar-istiok
 # List of resource files that kustomize reads, modifies
 # and emits as a YAML string
 resources:
-- ../../base/combined
+- ../../base
 - ../common
 - virtualservice.yaml
 
